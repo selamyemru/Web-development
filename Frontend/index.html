@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Merkato Market</title>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+        />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="content-language" content="en" />
+        <link rel="icon" type="image/x-icon" href="./images/merkato_icon.png" />
+        <link
+            rel="stylesheet"
+            href="./node_modules/font-awesome/css/all.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="node_modules/bootstrap/dist/css/bootstrap.css"
+        />
+        <link rel="stylesheet" href="./css/style.css" />
+        <script src="./js/common.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="./js/index.js"></script>
+
+        <script src="./js/forIndex.js"></script>
+    </head>
+
+    <body>
+        <header
+            class="container-fluid bg-black text-white bg-gradient pt-2 mx-0 px-0"
+        >
+            <div>
+                <h1 hidden>Product Detail</h1>
+                <nav class="container-fluid mx-0 px-0">
+                    <div class="row mx-0 px-0 pb-2">
+                        <a
+                            href="/"
+                            class="col-2 col-sm-12 mx-sm-auto col-md-1 mx-md-5 d-flex col-11 justify-content-center my-1"
+                        >
+                            <picture>
+                                <img
+                                    class=""
+                                    src="./images/merkatologolight.png"
+                                    alt="The merkato market company logo"
+                                    height="40px"
+                                />
+                            </picture>
+                        </a>
+                        <div
+                            class="container d-sm-flex justify-content-sm-center col-4 col-sm-12 mx-sm-auto col-md-7 d-md-block col-10"
+                        >
+                            <form
+                                class="input-group row flex-nowrap"
+                                role="search"
+                                title="search box"
+                                id="search--form"
+                                onsubmit="searchProduct(event)"
+                            >
+                                <input
+                                    class="form-control border-success form-control-sm input-sm rounded-left flex-grow-8"
+                                    name="search"
+                                    id="searchbar"
+                                    placeholder="Search anything you want..."
+                                />
+
+                                <select
+                                    name="category"
+                                    id="category"
+                                    title="category"
+                                    class="form-select border-success form-select-sm col-2"
+                                    style="max-width: 80px"
+                                >
+                                    <option
+                                        aria-label="catagoryItem"
+                                        value="All"
+                                        aria-label="catagoryItem"
+                                        selected
+                                    >
+                                        All
+                                    </option>
+                                    <option
+                                        aria-label="catagoryItem"
+                                        value="Children"
+                                    >
+                                        Children
+                                    </option>
+                                    <option
+                                        aria-label="catagoryItem"
+                                        value="Electronics"
+                                    >
+                                        Electronics
+                                    </option>
+                                    <option
+                                        aria-label="catagoryItem"
+                                        value="Mobile"
+                                    >
+                                        Mobile
+                                    </option>
+                                    <!-- <option aria-label="catagoryItem" value="Appliances">
+                    Appliances
+                  </option> -->
+                                    <!-- <option aria-label="catagoryItem" value="Books">Books</option>
+                  <option aria-label="catagoryItem" value="Toys">Toys</option>
+                  <option aria-label="catagoryItem" value="Software">
+                    Software
+                  </option>
+                  <option aria-label="catagoryItem" value="Fashion">
+                    Fashion
+                  </option>
+                  <option aria-label="catagoryItem" value="Kitchen">
+                    Kitchen
+                  </option> -->
+                                    /
+                                </select>
+
+                                <button
+                                    title="submit"
+                                    id="submit"
+                                    name="submit"
+                                    aria-label="Search"
+                                    tabindex="-1"
+                                    class="btn btn-success btn-sm col-2"
+                                >
+                                    Search
+                                </button>
+                                
+                            </form>
+                            
+                        </div>
+                        <div class="col-1 container d-flex" id="logout">
+                        
+                    </div>
+                        
+                        
+
+                    </div>
+                    <div class="row mx-0 px-0 text-white bg-dark bg-grdient">
+                        <div
+                            class="row align-content-center justify-content-center justify-items-center"
+                        >
+                            <div class="col-auto">
+                                <a
+                                    class="text-decoration-none"
+                                    href="/index.html"
+                                    ><p
+                                        class="fw-semibold text-white py-1 m-0 link-primary pe-auto is-link"
+                                        style="cursor: pointer"
+                                    >
+                                        ALL
+                                    </p></a
+                                >
+                            </div>
+                            <div class="col-auto">
+                                <p
+                                    onclick="searchByCategory('CHILDREN')"
+                                    class="fw-semibold text-white py-1 m-0 link-primary pe-auto is-link"
+                                    style="cursor: pointer"
+                                >
+                                    CHILDREN
+                                </p>
+                            </div>
+                            <div class="col-auto">
+                                <p
+                                    onclick="searchByCategory('BEAUTY')"
+                                    class="fw-semibold text-white py-1 m-0 link-primary pe-auto is-link"
+                                    style="cursor: pointer"
+                                >
+                                    BEAUTY
+                                </p>
+                            </div>
+                            <div class="col-auto">
+                                <p
+                                    onclick="searchByCategory('ELECTRONICS')"
+                                    class="fw-semibold text-white py-1 m-0 link-primary pe-auto is-link"
+                                    style="cursor: pointer"
+                                >
+                                    ELECTRONICS
+                                </p>
+                            </div>
+                            <div class="col-auto">
+                                <p
+                                    onclick="searchByCategory('APPLIANCES')"
+                                    class="fw-semibold text-white py-1 m-0 link-primary pe-auto is-link"
+                                    style="cursor: pointer"
+                                >
+                                    APPLIANCES
+                                </p>
+                            </div>
+                            <div class="col-auto">
+                                <p
+                                    onclick="searchByCategory('SPORT')"
+                                    class="fw-semibold text-white py-1 m-0 link-primary pe-auto is-link"
+                                    style="cursor: pointer"
+                                >
+                                    SPORT
+                                </p>
+                            </div>
+                            <div class="col-auto">
+                                <p
+                                    onclick="searchByCategory('MUSIC')"
+                                    class="fw-semibold text-white py-1 m-0 link-primary pe-auto is-link"
+                                    style="cursor: pointer"
+                                >
+                                    MUSIC
+                                </p>
+                            </div>
+                            <div class="col-auto">
+                                <p
+                                    onclick="searchByCategory('BOOKS')"
+                                    class="fw-semibold text-white py-1 m-0 link-primary pe-auto is-link"
+                                    style="cursor: pointer"
+                                >
+                                    BOOKS
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--  -->
+                </nav>
+            </div>
+        </header>
+
+        <main id="main">
+            <div class="main-container">
+                <div id="loginmodal" class="modal fade">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <button
+                                    type="button"
+                                    class="btn-close btn-close-black"
+                                    data-bs-dismiss="modal"
+                                ></button>
+                                <div class="myform bg-white">
+                                    <h1 class="text-center modal-title">
+                                        Login
+                                    </h1>
+                                    <form
+                                        action="#"
+                                        onsubmit="Login(event)"
+                                        id="loginForm"
+                                    >
+                                        <div class="mb-3 mt-3">
+                                            <label for="email"> Email</label>
+                                            <input
+                                                onkeypress="return event.key != 'Enter'"
+                                                type="email"
+                                                required
+                                                name="email"
+                                                id="email"
+                                                class="form-control"
+                                            />
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="password">
+                                                Password</label
+                                            >
+                                            <input
+                                                onkeypress="return event.key != 'Enter'"
+                                                type="password"
+                                                required
+                                                name="password"
+                                                id="password"
+                                                class="form-control"
+                                            />
+                                        </div>
+                                        <button
+                                            type="submit"
+                                            class="btn btn-dark mt-3"
+                                            onclick="Login(event)"
+                                        >
+                                            Login
+                                        </button>
+                                        <p
+                                            id="loginError"
+                                            style="color: red"
+                                        ></p>
+                                        
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="registermodal" class="modal fade">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <button
+                                    type="button"
+                                    id="close-register"
+                                    class="btn-close btn-close-black"
+                                    data-bs-dismiss="modal"
+                                ></button>
+                                <div class="myform bg-white">
+                                    <h1 class="text-center modal-title">
+                                        Register
+                                    </h1>
+                                    <form
+                                        action="#"
+                                        onsubmit="Register(event)"
+                                        id="registerForm"
+                                    >
+                                        <div class="mb-3 mt-3">
+                                            <label for="email"> Email</label>
+                                            <input
+                                                onkeypress="return event.key != 'Enter'"
+                                                type="email"
+                                                required
+                                                name="email"
+                                                id="email"
+                                                class="form-control fom-control"
+                                            />
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="password">
+                                                Password</label
+                                            >
+                                            <input
+                                                onkeypress="return event.key != 'Enter'"
+                                                type="password"
+                                                required
+                                                name="password"
+                                                id="password"
+                                                class="form-control fom-control"
+                                            />
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="firstName">
+                                                First Name</label
+                                            >
+                                            <input
+                                                onkeypress="return event.key != 'Enter'"
+                                                type="text"
+                                                required
+                                                name="firstName"
+                                                id="firstName"
+                                                class="form-control fom-control"
+                                            />
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="lastName">
+                                                Last Name</label
+                                            >
+                                            <input
+                                                onkeypress="return event.key != 'Enter'"
+                                                type="text"
+                                                required
+                                                name="lastName"
+                                                id="lastName"
+                                                class="form-control fom-control"
+                                            />
+                                        </div>
+                                        <button
+                                            type="submit"
+                                            class="btn btnn btn-light mt-3"
+                                            onclick="Register(event)"
+                                        >
+                                            Register
+                                        </button>
+                                        <p
+                                            id="registerError"
+                                            style="color: red"
+                                        ></p>
+                                        <button
+                                            hidden
+                                            id="hidden--login"
+                                            data-bs-toggle="modal"
+                                            data-bs-dismiss="modal"
+                                            data-bs-target="#loginmodal"
+                                            class="btnn"
+                                            
+                                        ></button>
+                                        
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <picture class="row">
+                        <img
+                            id="main-container__banner__image"
+                            style="max-height: 300px; object-fit: cover"
+                            src="./images/homepage-banner.jpg"
+                            alt="shop with us"
+                        />
+                    </picture>
+                </div>
+
+                <div class="container d-flex justify-content-center">
+                    <div
+                        class="container row row-cols-1 flex-wrap justify-content-center"
+                        id="products"
+                    ></div>
+                </div>
+            </div>
+
+            <div
+                aria-label="cart"
+                class="position-fixed"
+                style="bottom: 2em; right: 3em"
+            >
+                <picture>
+                    <a href="/checkout.html">
+                        <img
+                            class="cart__image"
+                            src="./images/cart.png"
+                            alt="cart icon"
+                        />
+                    </a>
+                    <p
+                        class="position-absolute top-0 bg-warning px-1 rounded-circle m-0"
+                        id="cart__items-number"
+                        style="right: 10px; font-size: 14px"
+                    ></p>
+                </picture>
+            </div>
+
+            <div
+                class="container mx-auto d-flex justify-content-center flex-column align-items-center mt-4 mb-5 row"
+            >
+                <h1 class="text-center">Shop Secure</h1>
+                <picture
+                    class="row container d-flex mx-auto justify-content-center"
+                >
+                    <img
+                        class="col-auto"
+                        src="./images/google trust.avif"
+                        width="150px"
+                        height="150px"
+                        alt="secured payment"
+                    />
+                    <img
+                        class="col-auto"
+                        src="./images/secure.avif"
+                        width="150px"
+                        height="150px"
+                        alt="save payment"
+                    />
+                    <img
+                        class="col-auto"
+                        src="./images/shoppify.avif"
+                        width="150px"
+                        height="150px"
+                        alt="verified payment"
+                    />
+                    <img
+                        class="col-auto"
+                        src="./images/trustmark.avif"
+                        width="150px"
+                        height="150px"
+                        alt="secured"
+                    />
+                </picture>
+            </div>
+        </main>
+
+        <footer class="row px-0 mx-0 container-fluid">
+            <a
+                class="py-2 px-0 bg-secondary bg-gradient text-center text-decoration-none m-0 link-light"
+                href="#main"
+                ><div
+                    class="text-black fw-bold"
+                    aria-details="returns to the top of the page"
+                >
+                    Back to Top
+                </div></a
+            >
+            <div
+                class="row bg-dark row-col-1 px-0 mx-auto text-white py-3 d-flex justify-content-center container-fluid row-col-lg-4"
+            >
+                <section
+                    class="col flex-shrink-1 flex-grow-1 my-3 fs-6 d-flex flex-column align-items-md-center d-sm-flex align-items-sm-center"
+                    style="max-width: 250px; min-width: 250px"
+                    aria-label="services"
+                >
+                    <p><b class="fs-6">Contact Us</b></p>
+                    <p>
+                        <a class="link-light" href="/contact.html"
+                            >Leave us a message</a
+                        >
+                    </p>
+                    <p>Map</p>
+                    <p>Custom Orders</p>
+                    <p>Distribute</p>
+                    <p>support@merkatomarket.com</p>
+                    <p>+011-255-1475</p>
+                </section>
+
+                <section
+                    class="col flex-shrink-1 flex-grow-1 my-3 d-flex flex-column align-items-md-center d-sm-flex align-items-sm-center"
+                    style="max-width: 250px; min-width: 250px"
+                    aria-label="services"
+                >
+                    <p><b class="fs-6">Info</b></p>
+                    <p>Search</p>
+                    <p>
+                        <a class="link-light" href="/faq.html">FAQ's</a>
+                    </p>
+                    <p>Delivery Info</p>
+                    <p>Refunds and Exchanges</p>
+                    <p>Corporate Gifting</p>
+                    <p>
+                        <a class="link-light" href="/about.html"
+                            >Our principles</a
+                        >
+                    </p>
+                    <p>Privacy Policy</p>
+                    <p>Terms of Service</p>
+                </section>
+
+                <section
+                    class="col flex-shrink-1 flex-grow-1 my-3 d-flex flex-column align-items-md-center d-sm-flex align-items-sm-center"
+                    style="max-width: 250px; min-width: 250px"
+                    aria-label="services"
+                >
+                    <p><b class="fs-6">Quick Links</b></p>
+                    <p>
+                        <a class="link-light" href="/index.html">Home</a>
+                    </p>
+                    <p>
+                        <a class="link-light" href="/about.html">Our Story</a>
+                    </p>
+                    <p>
+                        <a
+                            class="link-light"
+                            href="#"
+                            onclick="enterManagement()"
+                            >Management</a
+                        >
+                    </p>
+                    <p>Wishlist</p>
+                </section>
+
+                <section
+                    class="col flex-shrink-1 flex-grow-1 my-3 d-flex flex-column align-items-md-center d-sm-flex align-items-sm-center"
+                    style="max-width: 250px; min-width: 250px"
+                    aria-label="services"
+                >
+                    <p><b class="fs-6">Join our mailing list</b></p>
+                    <form name="subscription" class="form-group" action="/">
+                        <label for="email" class="form-label"> Email: </label>
+                        <div class="input-group">
+                            <input
+                                class="form-control fom-control form-control-sm rounded-0"
+                                aria-label="subscription"
+                                type="email"
+                                name="subscription__email"
+                                id="email"
+                                placeholder="Enter your email address"
+                                title="subscribe to daily email"
+                            />
+
+                            <input
+                                class="btn btn-sm btn-success rounded-0"
+                                type="submit"
+                                aria-label="subscribe"
+                                value="Subscribe"
+                                onclick="ValidateEmail(document.subscription.subscription__email)"
+                            />
+                        </div>
+                    </form>
+                </section>
+            </div>
+            <div class="row px-0 mx-0 bg-black">
+                <a
+                    href=""
+                    class="py-1 px-0 fs-6 text-decoration-none link-light text-center m-0"
+                    aria-label="licensce"
+                    >license and agreements</a
+                >
+            </div>
+        </footer>
+        <script src="./js/index.js"></script>
+    </body>
+    <script>
+        function viewDetailOfProduct(id) {
+            localStorage.setItem("id", id);
+        }
+    </script>
+    <script src="./js/common.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="./js/index.js"></script>
+
+    <script src="./js/forIndex.js"></script>
+</html>

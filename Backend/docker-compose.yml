@@ -1,0 +1,11 @@
+version: '2'
+services:
+  dev-db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgrespw"
+      POSTGRES_DB: "mynestdb"
+    ports:
+      - 9876:9876
+

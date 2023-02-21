@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Add Product</title>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+        />
+        <link rel="stylesheet" href="./css/addproduct.css" />
+        <link rel="icon" type="image/x-icon" href="./images/merkato_icon.png" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="content-language" content="en" />
+        <link
+            rel="stylesheet"
+            href="node_modules/bootstrap/dist/css/bootstrap.css"
+        />
+    </head>
+
+    <body>
+        <header class="header bg-black text-white">
+            <nav class="container-fluid d-flex mx-0 p-3">
+                <div class="">
+                    <a
+                        href="/"
+                        class="col-2 col-sm-12 mx-sm-auto col-md-1 mx-md-5 d-flex col-11 justify-content-center my-1"
+                    >
+                        <picture>
+                            <img
+                                class="header__container__upper__logo"
+                                src="./images/merkatologolight.png"
+                                alt="The merkato market company logo"
+                                height="40px"
+                            />
+                        </picture>
+                    </a>
+                </div>
+                <div>
+                    <h1 hidden class="merkato__title">Adminstration</h1>
+                </div>
+                <div class="container-fluid">
+                    <h1 class="text-center text-white">Add Product</h1>
+                </div>
+            </nav>
+        </header>
+
+        <main id="main">
+            <div class="container m-5">
+                <div id="loginmodal" class="modal fade">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <button
+                                    type="button"
+                                    class="btn-close btn-close-black"
+                                    data-bs-dismiss="modal"
+                                ></button>
+                                <div class="myform bg-white">
+                                    <h1 class="text-center modal-title">
+                                        Login
+                                    </h1>
+                                    <form
+                                        action="#"
+                                        onsubmit="Login(event)"
+                                        id="loginForm"
+                                    >
+                                        <div class="mb-3 mt-3">
+                                            <label for="email"> Email</label>
+                                            <input
+                                                onkeypress="return event.key != 'Enter'"
+                                                type="email"
+                                                required
+                                                name="email"
+                                                id="email"
+                                                class="form-control"
+                                            />
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="password">
+                                                Password</label
+                                            >
+                                            <input
+                                                onkeypress="return event.key != 'Enter'"
+                                                type="password"
+                                                required
+                                                name="password"
+                                                id="password"
+                                                class="form-control"
+                                            />
+                                        </div>
+                                        <button
+                                            type="submit"
+                                            class="btn btnn btn-light mt-3"
+                                        >
+                                            Login
+                                        </button>
+                                        <p
+                                            id="loginError"
+                                            style="color: red"
+                                        ></p>
+                                        <p>
+                                            Don't have an account?
+                                            <button
+                                                class="btn-primary  border-0 bg-white"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#registermodal"
+                                            >
+                                                Signup
+                                            </button>
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="registermodal" class="modal fade">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <button
+                                    type="button"
+                                    class="btn-close btn-close-black"
+                                    data-bs-dismiss="modal"
+                                ></button>
+                                <div class="myform bg-white">
+                                    <h1 class="text-center modal-title">
+                                        Register
+                                    </h1>
+                                    <form
+                                        action="#"
+                                        onsubmit="Register(event)"
+                                        id="registerForm"
+                                    >
+                                        <div class="mb-3 mt-3">
+                                            <label for="email"> Email</label>
+                                            <input
+                                                onkeypress="return event.key != 'Enter'"
+                                                type="email"
+                                                required
+                                                name="email"
+                                                id="email"
+                                                class="form-control fom-control"
+                                            />
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="password">
+                                                Password</label
+                                            >
+                                            <input
+                                                onkeypress="return event.key != 'Enter'"
+                                                type="password"
+                                                required
+                                                name="password"
+                                                id="password"
+                                                class="form-control fom-control"
+                                            />
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="firstName">
+                                                First Name</label
+                                            >
+                                            <input
+                                                onkeypress="return event.key != 'Enter'"
+                                                type="text"
+                                                required
+                                                name="firstName"
+                                                id="firstName"
+                                                class="form-control fom-control"
+                                            />
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="lastName">
+                                                Last Name</label
+                                            >
+                                            <input
+                                                onkeypress="return event.key != 'Enter'"
+                                                type="text"
+                                                required
+                                                name="lastName"
+                                                id="lastName"
+                                                class="form-control fom-control"
+                                            />
+                                        </div>
+                                        <button
+                                            type="submit"
+                                            class="btn btnn btn-light mt-3"
+                                        >
+                                            Register
+                                        </button>
+                                        <p
+                                            id="registerError"
+                                            style="color: red"
+                                        ></p>
+                                        <button
+                                            hidden
+                                            id="hidden--login"
+                                            data-bs-toggle="modal"
+                                            data-bs-dismiss="modal"
+                                            data-bs-target="#loginmodal"
+                                            class="btnn"
+                                        ></button>
+                                        <p>
+                                            have an account?
+                                            <button
+                                                class="btn-primary border-0 bg-white"
+                                                data-bs-toggle="modal"
+                                                data-bs-dismiss="modal"
+                                                data-bs-target="#loginmodal"
+                                            >
+                                                Signin
+                                            </button>
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container d-flex justify-content-center m-5">
+                    <form
+                        id="form"
+                        style="max-width: 700px"
+                        class="form row row-cols-md-2 form-sm"
+                        novalidate
+                        action="#"
+                        onsubmit="addProduct(event)"
+                    >
+                        <div id="for--image" class="w-100"></div>
+                        <label class="form-label" for="title">Title </label>
+                        <input
+                            class="form-control"
+                            required
+                            type="text"
+                            name="name"
+                            id="name"
+                            placeholder="Enter your title"
+                            title="title"
+                            minlength="10"
+                        />
+                        <div class="invalid-feedback">
+                            Title must have more than 10 characters
+                        </div>
+                        <label class="form-label" for="quantity"
+                            >Quantity
+                        </label>
+                        <input
+                            class="form-control"
+                            required
+                            type="number"
+                            name="quantity"
+                            id="quantity"
+                            placeholder="Enter the quantity"
+                            title="quantity"
+                        />
+                        <div class="invalid-feedback">
+                            Quantity can't be empty
+                        </div>
+
+                        <label class="form-label" for="price">Price </label>
+                        <div class="input-group">
+                            <div class="input-group-text">$</div>
+                            <input
+                                class="form-control"
+                                required
+                                type="number"
+                                name="price"
+                                id="price"
+                                placeholder="Enter the price"
+                                title="price"
+                            />
+                        </div>
+                        <div class="invalid-feedback">Price can't be empty</div>
+
+                        <label class="form-label" for="size">Size </label>
+                        <input
+                            class="form-control"
+                            required
+                            type="text"
+                            name="size"
+                            id="size"
+                            placeholder="Enter the size"
+                            title="size"
+                        />
+                        <div class="invalid-feedback">Size can't be empty</div>
+
+                        <label class="form-label" for="size">Category </label>
+                        <input
+                            class="form-control"
+                            required
+                            type="text"
+                            name="category"
+                            id="category"
+                            placeholder="Enter the category"
+                            title="category"
+                        />
+                        <div class="invalid-feedback">
+                            Category can't be empty
+                        </div>
+
+                        <label class="form-label" for="brand">Brand </label>
+                        <input
+                            class="form-control"
+                            required
+                            type="text"
+                            name="brand"
+                            id="brand"
+                            placeholder="Enter the brand"
+                            title="brand"
+                        />
+                        <div class="invalid-feedback">Brand can't be empty</div>
+
+                        <label class="form-label" for="image">Image </label>
+                        <input
+                            class="form-control"
+                            required
+                            type="file"
+                            name="image"
+                            id="image"
+                            title="image"
+                        />
+                        <div class="invalid-feedback">
+                            You must choose image
+                        </div>
+                        <label class="form-label" for="description"
+                            >Description
+                        </label>
+                        <textarea
+                            class="form-control description"
+                            name="description"
+                            id="description"
+                            cols="100"
+                            rows="10"
+                            placeholder="product description here"
+                        ></textarea>
+                        <div class="invalid-feedback">
+                            Description can't be empty
+                        </div>
+                        <button
+                            id="button--name"
+                            class="w-100 mt-1 col-md-1 btn btn-outline-primary"
+                        >
+                            Add
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <script defer src="./js/addProduct.js"></script>
+        <script src="./js/main.js"></script>
+        <script src="./js/placeholders.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
